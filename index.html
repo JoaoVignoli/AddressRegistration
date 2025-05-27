@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Registration</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="forms">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="input-name">
+        <label for="last-name">Last Name:</label>
+        <input type="text" name="last-name" id="last-name">
+        <div>
+            <label for="cep">Zip code:</label>
+            <input id="input-cep" name="cep" type="text" maxlength="8">
+            <label for="state">State:</label>
+            <input id="input-state" name="state" type="text" maxlength="2">
+            <label for="city">City:</label>
+            <input id="input-city" name="city" type="text">
+        </div>
+        <div>
+            <label for="neighborhood">Neighborhood:</label>
+            <input id="input-neighborhood" name="neighborhood" type="text">
+            <label for="street">Street:</label>
+            <input type="text" name="street" id="input-street">
+            <label for="number">Number:</label>
+            <input type="text" name="number" id="input-number">
+        </div>
+    </div>
+    <div>
+        <button id="register-button">Register</button>
+        <span id="message"></span>
+    </div>
+</body>
+</html>
