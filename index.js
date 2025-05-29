@@ -1,14 +1,35 @@
 let lista = []
 
+function createItemList(user) {
+    const table = document.getElementById("address-list");
+
+    const line = document.createElement("tr");
+    const nameColun = document.createElement("td");
+    const addressColun = document.createElement("td");
+
+    const name = user.name + " " + user.lastName;
+    const address = user.street + ", " + user.number + " - " + user.neighborhood + ", " + user.city + " - " + user.state + ", " + user.cep;
+
+    nameColun.innerText = name;
+    addressColun.innerText = address;
+
+    line.appendChild(nameColun);
+    line.appendChild(addressColun);
+    table.appendChild(line);
+}
+
 function registerUser() {
     const redColor   = "#e74c3c";
     const greenColor = "#27ae60";
 
+    const inputName = document.getElementById("input-name");
+    const inputLastName = document.getElementById("last-name");
     const inputCep = document.getElementById("input-cep");
     const inputState = document.getElementById("input-state");
     const inputCity  = document.getElementById("input-city");
     const inputNeighborhood = document.getElementById("input-neighborhood");
     const inputStreet = document.getElementById("input-street");
+    const inputNumber = document.getElementById("input-number");
     const message  = document.getElementById("message");
 
     const cep = inputCep.value;
@@ -20,6 +41,19 @@ function registerUser() {
     }
 
     lista.push(cep);
+
+    const user = {
+        "name": inputName.value,
+        "lastName": inputLastName.value,
+        "cep": cep,
+        "state": inputState.value,
+        "city": inputCity.value,
+        "neighborhood": inputNeighborhood.value,
+        "street": inputStreet.value,
+        "number": inputNumber.value
+    }
+
+    createItemList(user)
     message.innerText = "Zip code saved sucessfully.";
     message.style.color = greenColor;
 }
@@ -89,8 +123,15 @@ function getCepInfo() {
     
 }
 
+function validateCep(event) {
+    cep = event.target.value;
+    cep = cep.replace(/\D/g, '');
+    event.target.value = cep;
+}
+
 function main() {
     const inputCep = document.getElementById("input-cep");
+    inputCep.addEventListener("input", validateCep)
     inputCep.addEventListener("focusout", getCepInfo);
     const registerButton = document.getElementById("register-button");
     registerButton.addEventListener('click', registerUser)
